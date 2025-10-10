@@ -17,7 +17,7 @@ connection.once('open', () => {
   console.log("✅ MongoDB database connection established successfully");
 })
 
-const projectsRouter = require('./routes/projects');
+const projectsRouter = require('./routes/projects.js');
 app.use('/projects', projectsRouter);
 
 const educationRouter = require('./routes/education.js');
