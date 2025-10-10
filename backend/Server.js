@@ -3,7 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 require('dotenv').config();
-
+// corrected the server.js file name to Server.js
 const app = express();
 const port = process.env.PORT || 5000;
 
