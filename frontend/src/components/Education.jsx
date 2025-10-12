@@ -17,14 +17,7 @@ const educationData = [
       "Dean's List for Academic Excellence"
     ]
   },
-  {
-    _id: 2,
-    institution: "Another Institution",
-    degree: "Pre-University College",
-    year: "2016 - 2018",
-    cgpa: "95%",
-    achievements: []
-  }
+  
   // Add more education entries here if you need them
 ];
 
