@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
+// chnaged the file name from Server.js to server.js due to case sensitivity issue
 require('dotenv').config();
 // corrected the server.js file name to Server.js
 const app = express();
