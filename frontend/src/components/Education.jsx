@@ -9,7 +9,8 @@ const Education = () => {
     const [educationList, setEducationList] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/education/')
+        
+        axios.get(`${import.meta.env.VITE_API_URL}/projects/`)
             .then(response => {
                 setEducationList(response.data);
             })
