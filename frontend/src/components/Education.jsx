@@ -7,7 +7,7 @@ const educationData = [
   {
     _id: 1,
     institution: "Dayananda Sagar College of Engineering",
-    degree: "B.E | Roboics and Artificial Intelligence",
+    degree: "B.E | Robotics and Artificial Intelligence",
     year: "2024 - 2028",
     cgpa: "9.275 / 10.0",
     achievements: [
