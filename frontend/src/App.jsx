@@ -1,19 +1,27 @@
+// frontend/src/App.jsx - UPDATED
 import React from 'react';
-// src/App.jsx - CORRECTED VERSION
-import Hero from "./components/Hero.jsx";
-import Projects from "./components/Projects.jsx";
-import Skills from "./components/Skills.jsx";
-import Contact from "./components/Contact.jsx";
+import Hero from './components/Hero.jsx';
+import About from './components/About.jsx'; // Import
+import WorkExperience from './components/WorkExperience.jsx'; // Import
+import Projects from './components/Projects.jsx';
+import Skills from './components/Skills.jsx';
 import Education from './components/Education.jsx';
+import Certifications from './components/Certifications.jsx'; // Import
+import Contact from './components/Contact.jsx';
+import Footer from './components/Footer.jsx'; // Import
 
 function App() {
   return (
     <div className="app-container">
       <Hero />
-      <Projects />
+      <About id="about" />
+      <WorkExperience />
+      <Projects id="projects" />
       <Skills />
-      <Education /> 
-      <Contact />
+      <Education />
+      <Certifications />
+      <Contact id="contact" />
+      <Footer />
     </div>
   );
 }

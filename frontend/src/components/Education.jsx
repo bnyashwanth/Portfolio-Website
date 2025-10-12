@@ -9,13 +9,13 @@ const educationData = [
   {
     _id: 1,
     institution: "Dayananda Sagar College of Engineering",
-    degree: "B.E CSE (Robotics and AI)",
-    year: "2018 - 2022",
+    degree: "B.E CSE Roboics and Artificial Intelligence",
+    year: "2024 - 2028",
     cgpa: "9.275 / 10.0",
     achievements: [
-      "Participated in Smart India Hackathon 2025",
-      "Published a paper on Machine Learning",
-      "Dean's List for Academic Excellence"
+      "Participated in EY Techathon 6.0",
+      "Participated in ISP Student Program 2025"
+      
     ]
   },
   

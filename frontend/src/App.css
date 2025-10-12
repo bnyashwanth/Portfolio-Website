@@ -200,3 +200,129 @@ p { color: var(--font-color-secondary); line-height: 1.6; }
   margin-bottom: 0.5rem;
   color: var(--font-color-secondary);
 }
+
+/* --- Skills Redesign --- */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 80px;
+  transition: transform 0.2s ease;
+}
+.skill-item:hover {
+  transform: scale(1.1);
+  color: var(--accent-color-blue);
+}
+.skill-item svg {
+  font-size: 2.5rem;
+}
+.skill-item p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* --- Work Experience Section --- */
+.experience-entry {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+.experience-entry:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.experience-icon {
+  font-size: 1.5rem;
+  color: var(--accent-color-purple);
+  margin-top: 5px;
+}
+.experience-entry h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: white;
+}
+.experience-entry .company {
+  margin: 0.25rem 0;
+  font-weight: 500;
+  color: var(--font-color-primary);
+}
+.responsibilities-list {
+  margin: 0.75rem 0 0 0;
+  padding-left: 20px;
+  list-style-type: '›';
+}
+.responsibilities-list li {
+  padding-left: 10px;
+  margin-bottom: 0.5rem;
+  color: var(--font-color-secondary);
+}
+
+/* --- Certifications Section --- */
+.certifications-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.certifications-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+.certifications-list li:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.cert-icon {
+  color: var(--accent-color-blue);
+}
+
+/* --- Footer --- */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+.footer-links a {
+  color: var(--font-color-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.footer-links a:hover {
+  color: white;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.social-icons a {
+  color: var(--font-color-secondary);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.social-icons a:hover {
+  color: white;
+  transform: scale(1.2);
+}
+.copyright-note {
+  font-size: 0.9rem;
+  color: var(--font-color-secondary);
+}
