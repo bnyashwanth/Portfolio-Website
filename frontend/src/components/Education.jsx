@@ -1,57 +1,63 @@
-// frontend/src/components/Education.jsx
+// frontend/src/components/Education.jsx - UPDATED
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { FaUniversity } from 'react-icons/fa';
 
+// 1. Define your education data directly in an array
+const educationData = [
+  {
+    _id: 1,
+    institution: "Dayananda Sagar College of Engineering",
+    degree: "B.E CSE (Robotics and AI)",
+    year: "2018 - 2022",
+    cgpa: "9.275 / 10.0",
+    achievements: [
+      "Participated in Smart India Hackathon 2025",
+      "Published a paper on Machine Learning",
+      "Dean's List for Academic Excellence"
+    ]
+  },
+  {
+    _id: 2,
+    institution: "Another Institution",
+    degree: "Pre-University College",
+    year: "2016 - 2018",
+    cgpa: "95%",
+    achievements: []
+  }
+  // Add more education entries here if you need them
+];
 
 const Education = () => {
-    const [educationList, setEducationList] = useState([]);
+  // 2. Remove useState, useEffect, and axios. The component is now much simpler.
+  return (
+    <section>
+      <h2>My Education</h2>
+      <div className="glass-card">
+        {/* 3. Map directly over your new educationData array */}
+        {educationData.map(edu => (
+          <div key={edu._id} className="education-entry">
+            <FaUniversity className="education-icon" />
+            <div>
+              <h3>{edu.degree}</h3>
+              <p className="institution">{edu.institution}</p>
+              <p className="year">{edu.year}</p>
 
-    useEffect(() => {
-        
-            axios.get(`${import.meta.env.VITE_API_URL}/education`)
-            .then(response => {
-                setEducationList(response.data);
-            })
-            .catch(error => {
-                console.log("Error fetching education data:", error);
-            });
-    }, []);
-
-    if (educationList.length === 0) {
-        return null; // Don't render the section if there's no data
-    }
-
-    return (
-        <section>
-            <h2>My Education</h2>
-            <div className="glass-card">
-                {educationList.map(edu => (
-                    <div key={edu._id} className="education-entry">
-                        <FaUniversity className="education-icon" />
-                        <div>
-                            <h3>{edu.degree}</h3>
-                            <p className="institution">{edu.institution}</p>
-                            <p className="year">{edu.year}</p>
-
-                            {/* Conditionally render CGPA if it exists */}
-                            {edu.cgpa && <p className="cgpa">CGPA: {edu.cgpa}</p>}
-                            
-                            {/* Conditionally render achievements if they exist */}
-                            {edu.achievements && edu.achievements.length > 0 && (
-                                <ul className="achievements-list">
-                                    {edu.achievements.map((item, index) => (
-                                        <li key={index}>{item}</li>
-                                    ))}
-                                </ul>
-                            )}
-                        </div>
-                    </div>
-                ))}
+              {edu.cgpa && <p className="cgpa">CGPA: {edu.cgpa}</p>}
+              
+              {edu.achievements && edu.achievements.length > 0 && (
+                <ul className="achievements-list">
+                  {edu.achievements.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              )}
             </div>
-        </section>
-    );
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 };
 
 export default Education;
