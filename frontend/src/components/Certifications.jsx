@@ -3,9 +3,9 @@ import React from 'react';
 import { FaCertificate } from 'react-icons/fa';
 
 const certificationData = [
-  { _id: 1, name: "MongoDB Certified Developer", authority: "MongoDB University" },
-  { _id: 2, name: "React - The Complete Guide", authority: "Udemy" },
-  { _id: 3, name: "Node.js, Express, MongoDB & More", authority: "Udemy" },
+  { _id: 1, name: "Full-Stack Web Developer", authority: "Apna College" },
+  { _id: 2, name: "Data Structures and Algorithmns", authority: "Apna College" },
+  { _id: 3, name: "Data Science", authority: "Udemy" },
 ];
 
 const Certifications = () => {
