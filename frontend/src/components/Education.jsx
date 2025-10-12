@@ -1,15 +1,13 @@
-// frontend/src/components/Education.jsx - UPDATED
-// changed and deleted the code to reomve backend dependency
 
 import React from 'react';
 import { FaUniversity } from 'react-icons/fa';
 
-// 1. Define your education data directly in an array
+
 const educationData = [
   {
     _id: 1,
     institution: "Dayananda Sagar College of Engineering",
-    degree: "B.E  CSE Roboics and Artificial Intelligence",
+    degree: "B.E | Roboics and Artificial Intelligence",
     year: "2024 - 2028",
     cgpa: "9.275 / 10.0",
     achievements: [
