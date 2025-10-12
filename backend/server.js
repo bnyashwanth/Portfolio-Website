@@ -20,8 +20,7 @@ connection.once('open', () => {
 const projectsRouter = require('./routes/projects.js');
 app.use('/projects', projectsRouter);
 
-const educationRouter = require('./routes/education.js');
-app.use('/education', educationRouter);
+
 
 
 app.listen(port, () => {
