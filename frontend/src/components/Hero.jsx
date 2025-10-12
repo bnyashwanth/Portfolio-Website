@@ -12,9 +12,7 @@ const Hero = () => {
       />
       <h1>B N Yashwanth </h1>
       <p className="subtitle">MERN Stack Developer | AI Enginner | ML Enthusiast </p>
-      <p>
-        I build beautiful and reliable web applications. Currently focused on the MERN stack and exploring the world of Agentic AI. I'm passionate about clean code and great user experiences.
-      </p>
+      
     </div>
   );
 };
