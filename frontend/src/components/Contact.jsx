@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 const Contact = () => {
   return (
     <section>
-      <h2>Get In Touch</h2>
+      <h3> Contact Details </h3>
       <div className="glass-card contact-card">
         <p>I'm currently open to new opportunities. Feel free to reach out!</p>
         <a href="mailto:bnyashwanth2006@example.com" className="btn btn-gradient" style={{marginTop: '1rem'}}>

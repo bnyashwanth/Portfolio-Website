@@ -20,7 +20,7 @@ function App() {
       <Skills />
       <Education />
       <Certifications />
-      <Contact id="contact" />
+      
       <Footer />
     </div>
   );

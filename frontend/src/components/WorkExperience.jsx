@@ -5,15 +5,33 @@ import { FaBriefcase } from 'react-icons/fa';
 const experienceData = [
   {
     _id: 1,
-    title: "Software Developer Intern",
-    company: "Tech Solutions Inc.",
-    year: "June 2023 - Aug 2023",
+    title: "Project RFP-AI (AI-Powered RFP Analysis Tool)",
+    company: "Team Lead | Developer ",
+    year: "Sept 2025 - Nov 2025",
     responsibilities: [
       "Assisted in developing and maintaining features for a client-facing web application using the MERN stack.",
       "Collaborated with the team on bug fixes and performance improvements.",
-      "Participated in daily stand-ups and sprint planning meetings."
+      
     ]
+
+
+    
   },
+
+  {
+    _id: 2,
+    title: "Built a Portfolio Website",
+    company: "Personal Project",
+    year: "Jan 2025 - Present",
+    responsibilities: [
+        "Designed and developed a personal portfolio website using React to showcase projects and skills.",
+        "Implemented responsive design principles to ensure the website is accessible on various devices.",
+        "Deployed the website using GitHub Pages for easy access and sharing."
+    ]
+
+  }
+
+  
   // Add another job here if you have one
 ];
 

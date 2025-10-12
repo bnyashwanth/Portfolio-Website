@@ -7,10 +7,10 @@ const skills = [
   { name: 'Node.js', icon: <FaNodeJs /> },
   { name: 'MongoDB', icon: <FaDatabase /> },
   { name: 'JavaScript', icon: <FaJsSquare /> },
-  { name: 'Python', icon: <FaPython /> },
+  // { name: 'Python', icon: <FaPython /> },
   { name: 'Docker', icon: <FaDocker /> },
-  { name: 'HTML5', icon: <FaHtml5 /> },
-  { name: 'CSS3', icon: <FaCss3Alt /> },
+   { name: 'HTML5', icon: <FaHtml5 /> },
+ 
 ];
 
 const Skills = () => {
