@@ -8,12 +8,18 @@ const skills = [
   { name: 'JavaScript', icon: <FaJsSquare /> },
   { name: 'HTML5', icon: <FaHtml5 /> },
   { name: 'CSS3', icon: <FaCss3Alt /> },
+  {name : 'Express.js', icon: <FaNodeJs />}, 
+  {name : 'RESTful APIs', icon: <FaNodeJs />},
+  {name : 'Git & GitHub', icon: <FaJsSquare />},
+  {name :'python', icon: <FaJsSquare />},
+  {name : 'C/C++', icon: <FaJsSquare />},
+  {name : 'Machine Learning', icon: <FaJsSquare />},
 ];
 
 const Skills = () => {
   return (
     <section>
-      <h2>My Skills</h2>
+      <h2>Skills</h2>
       <div className="glass-card">
         <div className="skills-grid">
           {skills.map(skill => (
