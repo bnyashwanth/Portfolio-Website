@@ -1,4 +1,5 @@
 // frontend/src/components/Education.jsx - UPDATED
+// changed and deleted the code to reomve backend dependency
 
 import React from 'react';
 import { FaUniversity } from 'react-icons/fa';
