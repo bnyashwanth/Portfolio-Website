@@ -16,7 +16,7 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"], // allow both ports
+    origin: ["https://portfolio-website-zeta-flax-98.vercel.app/", "http://localhost:5174"], // allow both ports
     methods: ["GET", "POST"],
     credentials: true,
   })
