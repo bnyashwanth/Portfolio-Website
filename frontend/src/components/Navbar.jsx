@@ -45,7 +45,7 @@ const Sidebar = () => {
       {/* Sidebar */}
       <aside className={`sidebar ${isOpen ? "open" : ""}`}>
         <div className="sidebar-header">
-          <h2 className="sidebar-logo">Yashwanth</h2>
+          <h2 className="sidebar-logo">Portfolio </h2>
         </div>
 
         <ul className="sidebar-menu">
