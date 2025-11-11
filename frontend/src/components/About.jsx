@@ -1,20 +1,30 @@
-// frontend/src/components/About.jsx
-import React from 'react';
+import React from "react";
+import ChatBot from "./ChatBot";
 
-const About = () => {
+export default function About() {
   return (
-    <section>
+    <section id="about" className="app-section">
+      {/* About Me Glass Card */}
       <h2>About Me</h2>
       <div className="glass-card">
+        
         <p>
-          Hello! I'm Yashwanth, a passionate MERN Stack Developer with a keen interest in Robotics and Artificial Intelligence. My journey in technology began with a curiosity for how things work, which quickly evolved into a passion for building robust and scalable web applications.
+          I'm Yashwanth, a passionate{" "}
+          <strong>MERN Stack Developer</strong> currently exploring{" "}
+          <strong>Robotics</strong> and <strong>Artificial Intelligence</strong>.
+          I enjoy building innovative applications that merge modern web
+          technologies with intelligent automation.
         </p>
         <p>
-           I'm always eager to learn new technologies and continuously improve my skills to deliver high-quality, user-centric solutions.
+          My journey started with curiosity about how things work, which evolved
+          into a passion for creating scalable, user-focused, and smart systems.
+          I love connecting web development and AI to build solutions that make
+          an impact.
         </p>
       </div>
+
+
+  
     </section>
   );
-};
-
-export default About;
+}

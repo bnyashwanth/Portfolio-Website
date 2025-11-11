@@ -12,7 +12,7 @@ const educationData = [
     cgpa: "9.275 / 10.0",
     achievements: [
       "Participated in EY Techathon 6.0",
-      "Participated in ISP Student Program 2025"
+      "Participated in Internshala ISP Student Program 2025"
       
     ]
   },

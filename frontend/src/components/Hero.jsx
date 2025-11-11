@@ -10,8 +10,8 @@ const Hero = () => {
         alt="A photo of Your Name" 
         className="profile-picture" 
       />
-      <h1>B N Yashwanth </h1>
-      <p className="subtitle">MERN Stack Developer | AI Enginner | ML Enthusiast </p>
+      <h1>Hi, I'm   B N Yashwanth </h1>
+      <h4 className="subtitle">Full-Stack Web Developer | Exploring Robotics  </h4>
       
     </div>
   );

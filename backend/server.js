@@ -1,28 +1,42 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-// chnaged the file name from Server.js to server.js due to case sensitivity issue
-require('dotenv').config();
-// corrected the server.js file name to Server.js
+import express from "express";
+import cors from "cors";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+import aiChatRouter from "./routes/aiChat.js";
+// import aiRoute from "./routes/ai.js";
+import projectsRouter from "./routes/projects.js";
+
+dotenv.config();
+
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+// ✅ Enable JSON and CORS middleware before routes
 app.use(express.json());
-
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri);
-const connection = mongoose.connection;
-connection.once('open', () => {
-  console.log("✅ MongoDB database connection established successfully");
-})
-
-const projectsRouter = require('./routes/projects.js');
-app.use('/projects', projectsRouter);
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "http://localhost:5174"], // allow both ports
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 
 
+// ✅ MongoDB Connection
+mongoose
+  .connect(process.env.ATLAS_URI)
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch((err) => console.error("❌ MongoDB Error:", err));
 
+// ✅ Routes (use only once)
+app.use("/api", aiChatRouter);
+// app.use("/api", aiRoute);
+app.use("/projects", projectsRouter);
+
+// Optional: Root check
+app.get("/", (req, res) => res.send("🚀 Backend running fine!"));
 
 app.listen(port, () => {
-    console.log(`🚀 Server is running on port: ${port}`);
+  console.log(`🚀 Server running on port ${port}`);
 });
