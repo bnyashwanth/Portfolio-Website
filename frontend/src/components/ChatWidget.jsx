@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaRobot, FaTimes, FaPaperPlane } from "react-icons/fa";
 import "../App.css";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +30,7 @@ const ChatWidget = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("https://portfolio-website-1-rvrq.onrender.com/", {
+      const res = await fetch(`${API_URL}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: messageText }),

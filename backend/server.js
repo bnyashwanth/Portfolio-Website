@@ -13,10 +13,13 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // ✅ Enable JSON and CORS middleware before routes
-app.use(express.json());
+// ✅ Allow your frontend domain
 app.use(
   cors({
-    origin: ["https://portfolio-website-zeta-flax-98.vercel.app/", "http://localhost:5174"], // allow both ports
+    origin: [
+      "https://portfolio-website-zeta-flax-98.vercel.app/", // your frontend domain
+      "http://localhost:5173", // for local dev
+    ],
     methods: ["GET", "POST"],
     credentials: true,
   })
