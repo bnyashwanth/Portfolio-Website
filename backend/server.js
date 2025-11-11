@@ -24,6 +24,8 @@ app.use(
     credentials: true,
   })
 );
+// === TEST ROUTE ===
+
 
 
 // ✅ MongoDB Connection
