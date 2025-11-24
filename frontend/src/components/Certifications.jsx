@@ -11,7 +11,7 @@ const Certifications = () => {
   const [selectedCert, setSelectedCert] = useState(null);
 
   return (
-    <section>
+    <section className="reveal">
       <h2>Certifications & Courses</h2>
 
       <div className="glass-card">

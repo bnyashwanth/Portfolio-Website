@@ -2807,3 +2807,44 @@ body.menu-open {
   transform: translateX(100%) !important;
   opacity: 0 !important;
 }
+
+
+/* ============================= */
+/* 🔥 Smooth Fade-Up Animations */
+/* ============================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide-in from left */
+.slide-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slide-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide-in from right */
+.slide-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slide-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}

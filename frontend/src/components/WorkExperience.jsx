@@ -53,7 +53,7 @@ const WorkExperience = () => {
   if (experienceData.length === 0) return null;
 
   return (
-    <section>
+    <section >
       <h2>Work Experience</h2>
       <div className="glass-card">
         {experienceData.map(exp => (

@@ -3,6 +3,7 @@ import profilePic from '../assets/profile.png';
 
 const Hero = () => {
   return (
+    <section className="reveal">
      <div className="glass-card hero-card">
       {/* 2. Add the img tag here */}
       <img 
@@ -14,6 +15,7 @@ const Hero = () => {
       <h4 className="subtitle">Full-Stack Web Developer | Exploring Robotics  </h4>
       
     </div>
+    </section>
   );
 };
 

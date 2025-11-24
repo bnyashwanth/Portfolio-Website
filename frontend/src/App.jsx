@@ -1,4 +1,6 @@
-import React from "react";
+
+import React, { useState, useEffect } from "react";
+
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
@@ -13,9 +15,13 @@ import { FaRobot } from "react-icons/fa";
 import FloatingChatButton from "./components/FloatingChatButton.jsx";
 import ChatWidget from "./components/ChatWidget.jsx";
 import ChatContainer from "./components/ChatContainer";
+import { revealOnScroll } from "./utils/revealAnimation";
 
 
 function App() {
+   useEffect(() => {
+    revealOnScroll();
+  }, []);
   return (
     <>
       <Navbar />

@@ -15,7 +15,7 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section>
+    <section className="skills-container slide-left">
       <h2>My Skills</h2>
       <div className="glass-card">
         <div className="skills-container">
