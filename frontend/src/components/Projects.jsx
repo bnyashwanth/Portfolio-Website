@@ -12,7 +12,7 @@ const Projects = () => {
     }, []);
 
     return (
-        <section className="projects-container reveal">
+        <section>
             <h2>My Projects</h2>
 
             <div className="projects-container">
