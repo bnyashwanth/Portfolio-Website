@@ -2,29 +2,39 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import fetch from "node-fetch";
+import mongoose from "mongoose";
+
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 
-// ✅ FIXED: Enable CORS properly for both local + production frontend
 app.use(
   cors({
     origin: [
-      "https://portfolio-website-zeta-flax-98.vercel.app", // ✅ your Vercel frontend
-      "http://localhost:5173", // ✅ for local dev
+      "https://portfolio-website-zeta-flax-98.vercel.app",
+      "http://localhost:5173",
     ],
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// --- Root route to test Render deployment ---
+// ⭐ FIX: Connect to MongoDB properly
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
+
+// Backend root route
 app.get("/", (req, res) => {
-  res.json({ status: "✅ Backend active and CORS enabled" });
+  res.json({ status: "Backend Active ✓" });
 });
 
-// --- Chat API route ---
+// Chat route
 app.post("/api/chat", async (req, res) => {
   try {
     const { message } = req.body;
@@ -33,8 +43,8 @@ app.post("/api/chat", async (req, res) => {
       return res.status(400).json({ error: "Message is required" });
     }
 
-    // --- Example Gemini-style AI response ---
     const reply = `Hi! Yashwanth here 👋 — You said: "${message}".`;
+
     return res.json({ reply });
   } catch (error) {
     console.error("Error in /api/chat:", error.message);
@@ -43,4 +53,6 @@ app.post("/api/chat", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`🚀 Server running on port ${PORT}`)
+);

@@ -70,6 +70,8 @@ const ChatWidget = () => {
   const handleQuestionClick = (question) => {
     sendMessage(question);
   };
+  console.log("API_URL:", API_URL);
+
 
   return (
     <>

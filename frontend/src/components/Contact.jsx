@@ -157,7 +157,9 @@ export default function Contact() {
                   <FaGithub />
                 </a>
                 <a
-                  href="https://linkedin.com/in/bnyashwanth"
+                  href="https://www.linkedin.com/in/bn-yashwanth
+
+"
                   target="_blank"
                   rel="noreferrer"
                 >
