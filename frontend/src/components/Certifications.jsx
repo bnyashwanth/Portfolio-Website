@@ -4,7 +4,7 @@ import { FaCertificate } from 'react-icons/fa';
 const certificationData = [
   { _id: 1, name: "Full-Stack Web Developer", authority: "Apna College", image: "/certificates/fullstack.png" },
   { _id: 2, name: "Data Structures and Algorithms", authority: "Apna College", image: "/certificates/dsa.jpg" },
- //  { _id: 3, name: "Data Science", authority: "Udemy", image: "/certificates/datascience.jpg" },
+ { _id: 3, name: "InterShala Student Program(ISP) 2025", authority: "internshala", image: "/certificates/ISP.jpg" },
 ];
 
 const Certifications = () => {

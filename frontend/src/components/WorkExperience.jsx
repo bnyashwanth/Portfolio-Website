@@ -29,7 +29,21 @@ const experienceData = [
         "Deployed the website using GitHub Pages for easy access and sharing."
     ]
 
-  }
+  },
+  {
+  _id: 3,
+  title: "Internshala Student Partner (ISP)",
+  company: "Internshala",
+  year: "July 2025 – Nov 2025",
+  responsibilities: [
+    
+    "Improved communication, outreach, and leadership skills through active student engagement.",
+    "Organized awareness activities and helped students explore career-oriented online courses.",
+    "Represented Internshala at by promoting various training programs and opportunities.",
+  ]
+}
+
+
 
   
   // Add another job here if you have one
