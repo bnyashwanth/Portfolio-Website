@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaRobot, FaTimes, FaPaperPlane } from "react-icons/fa";
 import "../App.css";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 const ChatWidget = () => {
@@ -10,10 +11,9 @@ const ChatWidget = () => {
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
-  // Auto-scroll to bottom whenever messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, loading]);
+  }, [messages]);
 
   const starterQuestions = [
     "Tell me about Yashwanth’s experience in AI & Robotics.",
@@ -22,7 +22,7 @@ const ChatWidget = () => {
   ];
 
   const sendMessage = async (messageText) => {
-    if (!messageText.trim()) return;
+    if (!messageText.trim() || loading) return;
 
     const userMsg = { text: messageText, sender: "user" };
     setMessages((prev) => [...prev, userMsg]);
@@ -37,41 +37,30 @@ const ChatWidget = () => {
       });
 
       const data = await res.json();
+      const botReply = data.reply || "⚠️ No response from AI server.";
 
-      // ✅ Typewriter effect for bot messages
-      const botReply = data.reply || "⚠️ No response from Gemini.";
-      let currentText = "";
-      setLoading(false);
       setMessages((prev) => [...prev, { text: "", sender: "bot" }]);
 
+      let currentText = "";
       for (let i = 0; i < botReply.length; i++) {
         currentText += botReply[i];
-        await new Promise((r) => setTimeout(r, 15)); // typing speed
+        await new Promise((r) => setTimeout(r, 8));
+
         setMessages((prev) => {
           const updated = [...prev];
           updated[updated.length - 1].text = currentText;
-          return [...updated];
+          return updated;
         });
       }
-    } catch (error) {
-      console.error("Chat error:", error);
+    } catch (err) {
       setMessages((prev) => [
         ...prev,
         { text: "⚠️ Error connecting to AI server.", sender: "bot" },
       ]);
-      setLoading(false);
     }
-  };
 
-  const handleSend = () => {
-    sendMessage(input);
+    setLoading(false);
   };
-
-  const handleQuestionClick = (question) => {
-    sendMessage(question);
-  };
-  console.log("API_URL:", API_URL);
-
 
   return (
     <>
@@ -83,15 +72,14 @@ const ChatWidget = () => {
           </div>
 
           <div className="chat-body">
-            {/* Starter questions */}
             {messages.length === 0 && !loading && (
               <div className="starter-questions">
                 <p className="starter-text">Try asking one of these:</p>
-                {starterQuestions.map((q, i) => (
+                {starterQuestions.map((q, index) => (
                   <button
-                    key={i}
+                    key={index}
                     className="starter-btn"
-                    onClick={() => handleQuestionClick(q)}
+                    onClick={() => sendMessage(q)}
                   >
                     {q}
                   </button>
@@ -99,19 +87,15 @@ const ChatWidget = () => {
               </div>
             )}
 
-            {/* Chat messages */}
             {messages.map((msg, i) => (
               <div key={i} className={`chat-msg ${msg.sender}`}>
                 {msg.text}
               </div>
             ))}
 
-            {/* Typing indicator */}
             {loading && (
               <div className="chat-msg bot typing">
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
+                <span>.</span><span>.</span><span>.</span>
               </div>
             )}
 
@@ -123,34 +107,23 @@ const ChatWidget = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type your message..."
-              onKeyDown={(e) => e.key === "Enter" && handleSend()}
+              onKeyDown={(e) => e.key === "Enter" && sendMessage(input)}
             />
-            <button onClick={handleSend}>
+            <button onClick={() => sendMessage(input)} disabled={loading}>
               <FaPaperPlane />
             </button>
           </div>
         </div>
       )}
 
-      {/* Floating chat button */}
       <div className="chat-float-btn" onClick={() => setIsOpen(!isOpen)}>
         <FaRobot className="chat-icon" />
-        <span className="chat-text">{isOpen ? "Close Chat" : "Chat with AI"}</span>
+        <span className="chat-text">
+          {isOpen ? "Close Chat" : "Chat with AI"}
+        </span>
       </div>
-
-
-
-      <div>
-        
-      </div>
-
-
-
-
     </>
   );
 };
 
 export default ChatWidget;
-
-
