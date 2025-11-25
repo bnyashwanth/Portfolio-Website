@@ -11,9 +11,17 @@ const ChatWidget = () => {
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
-  useEffect(() => {
+ const prevMessageCount = useRef(0);
+
+useEffect(() => {
+  // Only scroll when a NEW message is added (not during typing)
+  if (messages.length > prevMessageCount.current) {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }
+
+  prevMessageCount.current = messages.length;
+}, [messages]);
+
 
  const starterQuestions = [
   "How did Yashwanth start his journey in Web Development?",
