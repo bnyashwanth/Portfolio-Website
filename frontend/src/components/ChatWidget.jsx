@@ -15,11 +15,15 @@ const ChatWidget = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const starterQuestions = [
-    "Tell me about Yashwanth’s experience in AI & Robotics.",
-    "What projects has Yashwanth worked on?",
-    "What skills does Yashwanth have?",
-  ];
+ const starterQuestions = [
+  "How did Yashwanth start his journey in Web Development?",
+  "What motivated Yashwanth to move from Web Dev to AI & Robotics?",
+  "What are Yashwanth’s major projects so far?",
+  "What skills has Yashwanth mastered in AI, Robotics, and MERN?",
+  "What is Yashwanth currently learning and focusing on?",
+];
+
+
 
   const sendMessage = async (messageText) => {
     if (!messageText.trim() || loading) return;
