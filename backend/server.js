@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import chatRoutes from "./routes/chatRoutes.js";
+import voiceRoutes from "./routes/voiceRoutes.js"; 
+import ttsRoutes from "./routes/ttsroutes.js";
 
 dotenv.config();
 
@@ -30,6 +32,8 @@ app.get("/", (req, res) => {
 
 // Attach your AI chat routes
 app.use("/api", chatRoutes); // <-- /api/chat is now live
+app.use("/api", voiceRoutes); 
+app.use("/api", ttsRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;
