@@ -4,7 +4,7 @@ import { Client } from "@gradio/client"; // Import the client
 import "../App.css";
 
 // Ensure this is set in your .env file: VITE_API_URL=http://127.0.0.1:7860/
-const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:7860/";
+const API_URL = "https://portfolio-website-ena0.onrender.com/" || "http://127.0.0.1:7860/";
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
