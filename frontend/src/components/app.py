@@ -70,17 +70,26 @@ class Me:
 # FASTAPI SETUP (The Fix)
 # ---------------------------
 # 1. Create the FastAPI App explicitly
+# ---------------------------
+# FASTAPI SETUP
+# ---------------------------
 app = FastAPI()
 
-# 2. Add CORS Middleware manually (This fixes the 'unexpected keyword' error)
+origins = [
+    "https://portfolio-website-zeta-flax-98.vercel.app",  # Your Vercel App (No trailing slash!)
+    "http://localhost:5173",                              # Local React
+    "http://localhost:3000"                               # Local React Alternate
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins (localhost + vercel)
-    allow_credentials=True,
+    allow_origins=origins,    # 👈 MUST be explicit list, NOT ["*"]
+    allow_credentials=True,   # 👈 React needs this true
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# ... Rest of the code ...
 # 3. Create Gradio Interface
 me = Me()
 demo = gr.ChatInterface(
