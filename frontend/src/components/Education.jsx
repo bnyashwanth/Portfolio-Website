@@ -12,21 +12,23 @@ const educationData = [
     cgpa: "9.275 / 10.0",
     achievements: [
       "Participated in EY Techathon 6.0",
-      "Participated in Internshala ISP Student Program 2025"
+      "Participated in Internshala ISP Student Program 2025",
+      "Participated in Vibe_HACK 2.0 Hackathon"
       
     ]
   },
   
-  // Add more education entries here if you need them
+  
 ];
 
 const Education = () => {
-  // 2. Remove useState, useEffect, and axios. The component is now much simpler.
+  if (educationData.length === 0) return null;
+
   return (
     <section>
       <h2>My Education</h2>
       <div className="glass-card">
-        {/* 3. Map directly over your new educationData array */}
+      
         {educationData.map(edu => (
           <div key={edu._id} className="education-entry">
             <FaUniversity className="education-icon" />

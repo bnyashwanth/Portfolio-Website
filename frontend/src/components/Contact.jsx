@@ -26,12 +26,12 @@ export default function Contact() {
     e.preventDefault();
     setIsSending(true);
 
-    // 💌 Send email using EmailJS
+    
     emailjs.send(
-  "service_9gqian8",   // ← your Service ID
-  "template_zgk1x7s",  // ← your Template ID
+  "service_9gqian8",   // this is my service ID from emailjs
+  "template_zgk1x7s",  // this is my template ID from emailjs
   formData,
-  "3nfhdJegav-Il8j34"      // ← your Public Key
+  "3nfhdJegav-Il8j34"      // this is my public key from emailjs
 )
       .then(
         (result) => {
@@ -56,7 +56,7 @@ export default function Contact() {
       </p>
 
       <div className="contact-grid">
-        {/* Left - Contact Form */}
+       
         <div className="glass-card contact-form-card">
           <form onSubmit={handleSubmit}>
             <div className="form-row">

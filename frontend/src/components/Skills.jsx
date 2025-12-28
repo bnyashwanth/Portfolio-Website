@@ -1,4 +1,3 @@
-// frontend/src/components/Skills.jsx - MODIFIED
 import React from 'react';
 import { FaReact, FaNodeJs, FaDatabase, FaJsSquare, FaHtml5, FaCss3Alt, FaPython, FaDocker } from 'react-icons/fa';
 
@@ -9,8 +8,8 @@ const skills = [
   { name: 'JavaScript', icon: <FaJsSquare /> },
   // { name: 'Python', icon: <FaPython /> },
   { name: 'Docker', icon: <FaDocker /> },
-   { name: 'HTML5', icon: <FaHtml5 /> },
- 
+  { name: 'HTML5', icon: <FaHtml5 /> },
+  { name: 'CSS3', icon: <FaCss3Alt /> },
 ];
 
 const Skills = () => {

@@ -1,53 +1,46 @@
-// frontend/src/components/WorkExperience.jsx
 import React from 'react';
 import { FaBriefcase } from 'react-icons/fa';
-
-const experienceData = [
-  {
-    _id: 1,
-    title: "Project RFP-AI (AI-Powered RFP Analysis Tool)",
-    company: "Team Lead | Developer ",
-    year: "Sept 2025 - Nov 2025",
-    responsibilities: [
-      "Assisted in developing and maintaining features for a client-facing web application using the MERN stack.",
-      "Collaborated with the team on bug fixes and performance improvements.",
-      
-    ]
-
-
-    
-  },
-
-  {
-    _id: 2,
-    title: "Built a Portfolio Website",
-    company: "Personal Project",
-    year: "Jan 2025 - Present",
-    responsibilities: [
-        "Designed and developed a personal portfolio website using React to showcase projects and skills.",
-        "Implemented responsive design principles to ensure the website is accessible on various devices.",
-        "Deployed the website using GitHub Pages for easy access and sharing."
-    ]
-
-  },
-  {
-  _id: 3,
-  title: "Internshala Student Partner (ISP)",
-  company: "Internshala",
-  year: "July 2025 – Nov 2025",
-  responsibilities: [
-    
-    "Improved communication, outreach, and leadership skills through active student engagement.",
-    "Organized awareness activities and helped students explore career-oriented online courses.",
-    "Represented Internshala at by promoting various training programs and opportunities.",
-  ]
-}
 
 
 
   
-  // Add another job here if you have one
+const experienceData = [
+  {
+    _id: 1,
+    title: "Software Development Engineer Intern",
+    company: "YugaYatra Retail (OPC) Pvt. Ltd.",
+    year: "Dec 2025 – Present",
+    responsibilities: [
+      "Working on building and maintaining backend services and APIs for client-facing web applications.",
+      "Contributing to full-stack development using the MERN stack with a focus on performance and scalability.",
+      "Collaborating with senior developers on bug fixes, feature enhancements, and code optimization.",
+      "Gaining hands-on experience with production-level codebases and software engineering best practices."
+    ],
+  },
+  // {
+  //   _id: 2,
+  //   title: "AI Chatbot & Agentic AI Developer",
+  //   company: "Personal Project",
+  //   year: "2025",
+  //   responsibilities: [
+  //     "Built and deployed a personal AI chatbot using Large Language Model (LLM) APIs and Hugging Face.",
+  //     "Implemented Agentic AI concepts such as task planning, tool usage, and contextual memory.",
+  //     "Integrated AI features into a web application and deployed it for real-world usage."
+  //   ],
+  // },
+  // {
+  //   _id: 3,
+  //   title: "Portfolio Website Developer",
+  //   company: "Personal Project",
+  //   year: "Jan 2025 – Present",
+  //   responsibilities: [
+  //     "Designed and developed a personal portfolio website using React to showcase projects and skills.",
+  //     "Implemented responsive UI and modern design principles for cross-device compatibility.",
+  //     "Deployed the website using GitHub Pages for easy access and sharing."
+  //   ],
+  // }
 ];
+
 
 const WorkExperience = () => {
   if (experienceData.length === 0) return null;

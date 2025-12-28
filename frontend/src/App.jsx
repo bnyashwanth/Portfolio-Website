@@ -12,9 +12,7 @@ import Certifications from "./components/Certifications.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import { FaRobot } from "react-icons/fa";
-import FloatingChatButton from "./components/FloatingChatButton.jsx";
 import ChatWidget from "./components/ChatWidget.jsx";
-import ChatContainer from "./components/ChatContainer";
 import { revealOnScroll } from "./utils/revealAnimation";
 
 
