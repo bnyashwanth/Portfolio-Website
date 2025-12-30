@@ -12,7 +12,7 @@ const Hero = () => {
         className="profile-picture" 
       />
       <h1>Hi, I'm   B N Yashwanth </h1>
-      <h4 className="subtitle">Software Engineer Intern @ Yuga Yatra Retail | Web Developer | Exploring Agentic AI </h4>
+      <h4 className="subtitle">MERN Stack Developer | Incoming Software Engineering Intern | Exploring Agentic AI</h4>
       
     </div>
     </section>

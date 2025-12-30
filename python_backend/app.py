@@ -1,29 +1,34 @@
 import os
-import json
-import requests
-import gradio as gr
+import uvicorn
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-import uvicorn
+import gradio as gr
 
 # ---------------------------
-# ENV
+# CONFIGURATION
 # ---------------------------
 load_dotenv(override=True)
 API_KEY = os.getenv("GOOGLE_API_KEY")
 
 if not API_KEY:
-    # Fallback for simple testing if key is missing
     print("⚠️ GOOGLE_API_KEY not found. AI will not reply.")
     client = None
 else:
     client = genai.Client(api_key=API_KEY)
 
 # ---------------------------
-# AI AGENT CLASS (Keep your existing logic)
+# DATA MODELS
+# ---------------------------
+class ChatRequest(BaseModel):
+    message: str
+    history: list = []
+
+# ---------------------------
+# AI LOGIC
 # ---------------------------
 class Me:
     def __init__(self):
@@ -33,22 +38,25 @@ class Me:
                 self.summary = f.read()
         except:
             self.summary = "Summary unavailable."
-        self.model_name = "gemini-2.5-flash"
+        
+        self.model_name = "gemini-1.5-flash"
 
     def system_prompt(self):
         return f"You are {self.name}. Answer concisely based on: {self.summary}"
 
-    def chat(self, message, history):
+    def chat_logic(self, message, history):
         if not client: return "Error: API Key missing."
         
         contents = []
-        for h in history:
-            # Handle different history formats (Gradio 3 vs 4/5)
-            if isinstance(h, (list, tuple)):
-                u, b = h
+        # Convert history
+        for msg in history:
+            # Handle different history formats (list of lists or list of dicts)
+            if isinstance(msg, (list, tuple)) and len(msg) == 2:
+                u, b = msg
                 if u: contents.append(types.Content(role="user", parts=[types.Part(text=str(u))]))
                 if b: contents.append(types.Content(role="model", parts=[types.Part(text=str(b))]))
         
+        # Add current message
         contents.append(types.Content(role="user", parts=[types.Part(text=str(message))]))
 
         config = types.GenerateContentConfig(
@@ -66,45 +74,46 @@ class Me:
         except Exception as e:
             return f"Error: {str(e)}"
 
+me = Me()
+
 # ---------------------------
-# FASTAPI SETUP (The Fix)
-# ---------------------------
-# 1. Create the FastAPI App explicitly
-# ---------------------------
-# FASTAPI SETUP
+# FASTAPI APP
 # ---------------------------
 app = FastAPI()
 
+# CORS - Allow your React apps
 origins = [
-    "https://portfolio-website-zeta-flax-98.vercel.app",  # Your Vercel App (No trailing slash!)
-    "http://localhost:5173",                              # Local React
-    "http://localhost:3000"                               # Local React Alternate
+    "https://portfolio-website-zeta-flax-98.vercel.app",
+    "http://localhost:5173",
+    "http://localhost:3000"
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,    # 👈 MUST be explicit list, NOT ["*"]
-    allow_credentials=True,   # 👈 React needs this true
+    allow_origins=origins,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# ... Rest of the code ...
-# 3. Create Gradio Interface
-me = Me()
-demo = gr.ChatInterface(
-    fn=me.chat,
-    title="Yashwanth's AI Assistant"
-)
+# ✅ 1. THE PURE API ROUTE (For React)
+# This bypasses Gradio entirely for the frontend connection.
+# React sends JSON -> Python returns JSON. Simple and unbreakable.
+@app.post("/chat")
+async def chat_endpoint(req: ChatRequest):
+    try:
+        response_text = me.chat_logic(req.message, req.history)
+        return {"response": response_text}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
-# 4. Mount Gradio on top of FastAPI
-# The path must be empty string to mount at root
-gr.mount_gradio_app(app, demo, path="/")
+# ✅ 2. THE VISUAL UI (For Admin/Testing)
+# We still keep Gradio mounted so you can visit the URL and test it yourself.
+def gradio_chat(message, history):
+    return me.chat_logic(message, history)
 
-# 5. Run it
+ui = gr.ChatInterface(fn=gradio_chat, title="Yashwanth's AI Backend")
+gr.mount_gradio_app(app, ui, path="/")
+
 if __name__ == "__main__":
-    # Print version to debug
-    print(f"Running with Gradio Version: {gr.__version__}")
-    
-    # Use uvicorn directly
     uvicorn.run(app, host="0.0.0.0", port=7860)

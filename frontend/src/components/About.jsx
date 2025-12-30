@@ -6,11 +6,12 @@ export default function About() {
     <section id="about" className="app-section">
       {/* About Me Glass Card */}
       <h2>About Me</h2>
+
 <div className="glass-card">
   <p>
-    I'm Yashwanth, a{" "}
-    <strong>Software Development Engineer Intern</strong> at{" "}
-    <strong>Yugayatra</strong> and a second-year undergraduate in{" "}
+    I'm Yashwanth, an{" "}
+    <strong>Incoming Software Development Engineer Intern</strong> and a
+    second-year undergraduate in{" "}
     <strong>Robotics and Artificial Intelligence</strong> at{" "}
     <strong>Dayananda Sagar College of Engineering</strong>. I specialize in
     building scalable, real-world applications using the{" "}
@@ -24,7 +25,7 @@ export default function About() {
     applications. I have built and deployed a personal AI chatbot using{" "}
     <strong>Hugging Face</strong>, which introduced me to the foundations of{" "}
     <strong>Agentic AI</strong>—systems capable of task planning, tool usage, and
-    contextual memory.
+    contextual reasoning.
   </p>
 
   <p>
