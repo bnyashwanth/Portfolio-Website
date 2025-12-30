@@ -94,12 +94,15 @@ p { color: var(--font-color-secondary); line-height: 1.6; }
 .profile-picture {
   width: 150px;
   height: 150px;
-  border-radius: 50%; /* This is the line that makes it round */
+  border-radius: 50%;
   border: 3px solid var(--accent-color-blue);
-  object-fit: cover; 
+  object-fit: cover;
+  object-position: 50% 25%; /* 👈 MOVE IMAGE UP */
   margin: 0 auto 1.5rem auto;
   display: block;
 }
+
+
 
 /* frontend/src/App.css - NEW PROJECTS STYLES */
 
@@ -1334,12 +1337,7 @@ input, textarea {
     font-size: 1.6rem;
   }
 
-  .profile-picture {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 1rem;
-  }
-
+  
   .glass-card {
     padding: 1.8rem;
   }
@@ -1416,10 +1414,7 @@ input, textarea {
     font-size: 0.95rem;
   }
 
-  .profile-picture {
-    width: 100px;
-    height: 100px;
-  }
+ 
 
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);

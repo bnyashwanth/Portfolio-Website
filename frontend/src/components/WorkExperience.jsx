@@ -6,17 +6,18 @@ import { FaBriefcase } from 'react-icons/fa';
   
 const experienceData = [
   {
-    _id: 1,
-    title: "Software Development Engineer Intern",
-    company: "YugaYatra Retail (OPC) Pvt. Ltd.",
-    year: "Dec 2025 – Present",
-    responsibilities: [
-      "Working on building and maintaining backend services and APIs for client-facing web applications.",
-      "Contributing to full-stack development using the MERN stack with a focus on performance and scalability.",
-      "Collaborating with senior developers on bug fixes, feature enhancements, and code optimization.",
-      "Gaining hands-on experience with production-level codebases and software engineering best practices."
-    ],
-  },
+  _id: 1,
+  title: "Freelance Full-Stack Web Developer",
+  company: "Self-Initiated Projects",
+  year: "2024 – Present",
+  responsibilities: [
+    "Designed and developed end-to-end MERN stack applications, handling frontend, backend APIs, and database architecture.",
+    "Built real-world web applications with a focus on scalability, performance, and clean code practices.",
+    "Implemented RESTful APIs and integrated MongoDB for efficient data persistence.",
+    "Managed application deployment using Vercel, Render, and MongoDB Atlas."
+  ],
+},
+
   // {
   //   _id: 2,
   //   title: "AI Chatbot & Agentic AI Developer",

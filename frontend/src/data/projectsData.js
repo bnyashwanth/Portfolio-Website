@@ -8,15 +8,15 @@ const projectsData = [
     liveUrl: "https://rfp-ai-agent-theta.vercel.app/",
     githubUrl: "https://github.com/bnyashwanth/RFP-AI-agent"
   },
-//   {
-//     id: 2,
-//     title: "Robot Arm Simulation",
-//     description: "6-axis robot arm modeled in Fusion 360 and simulated in MATLAB.",
-//     imageUrl: "/images/wanderlust.png ",
-//     technologies: ["MATLAB", "Simulink", "Fusion360"],
-//     liveUrl: "https://example.com/robotarm",
-//     githubUrl: "https://github.com/example/robotarm"
-//   }
+  {
+    id: 2,
+    title: "Cargo-Guard AI",
+    description: "AI-powered cargo risk assessment system built with Python and Streamlit to analyze risk factors and deliver real-time insights.",
+    imageUrl: "/images/cargo-guard.png",
+    technologies: ["Python", "OpenCV", "TensorFlow"],
+    liveUrl: "https://cargoguard-ai-wyyeisb74bu7wsk38ygryo.streamlit.app/",
+    githubUrl: "https://github.com/bnyashwanth/CargoGuard-AI"
+  }
 ];
 
 export default projectsData;
