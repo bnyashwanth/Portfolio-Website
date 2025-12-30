@@ -10,7 +10,7 @@ export default function About() {
 <div className="glass-card">
   <p>
     I'm Yashwanth, an{" "}
-    <strong>Incoming Software Development Engineer Intern</strong> and a
+    <strong>Incoming Software Engineer Intern</strong> and a
     second-year undergraduate in{" "}
     <strong>Robotics and Artificial Intelligence</strong> at{" "}
     <strong>Dayananda Sagar College of Engineering</strong>. I specialize in
