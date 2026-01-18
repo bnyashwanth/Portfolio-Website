@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "backend",
   "version": "1.0.0",
   "description": "",
@@ -43,10 +42,5 @@
     "nodemon": "^3.0.1",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.19"
-=======
-  "dependencies": {
-    "@google/generative-ai": "^0.24.1",
-    "node-fetch": "^3.3.2"
->>>>>>> b868358899bbe7b2aa897846126407b25b5afeb4
   }
 }
