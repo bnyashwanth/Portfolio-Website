@@ -1,26 +1,10 @@
-import express from "express";
-import Project from "../models/project.model.js";
+const router = require('express').Router();
+let Project = require('../models/project.model');
 
-const router = express.Router();
-
-// Example routes
-router.get("/", async (req, res) => {
-  try {
-    const projects = await Project.find();
-    res.json(projects);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+router.route('/').get((req, res) => {
+    Project.find()
+        .then(projects => res.json(projects))
+        .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.post("/add", async (req, res) => {
-  try {
-    const project = new Project(req.body);
-    await project.save();
-    res.status(201).json({ message: "Project added!" });
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-});
-
-export default router;
+module.exports = router;

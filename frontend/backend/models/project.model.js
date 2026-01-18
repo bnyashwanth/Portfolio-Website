@@ -1,22 +1,22 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const { Schema } = mongoose;
+// backend/models/project.model.js - CORRECTED VERSION
 
-const projectSchema = new Schema(
-  {
+const projectSchema = new Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
     imageUrl: { type: String, required: true },
     technologies: [{ type: String }],
     liveUrl: { type: String },
     githubUrl: { type: String },
-  },
-  {
+}, {
     timestamps: true,
-    collection: "Project", // explicitly name collection
-  }
-);
+    collection: 'Project' // <-- ADD THIS LINE
+});
 
-const Project = mongoose.model("Project", projectSchema);
+const Project = mongoose.model('Project', projectSchema);
+module.exports = Project;
 
-export default Project;
+// backend/models/project.model.js - CORRECTED VERSION
+

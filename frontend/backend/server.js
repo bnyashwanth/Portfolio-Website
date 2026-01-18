@@ -1,45 +1,29 @@
-// server.js
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import chatRoutes from "./routes/chatRoutes.js";
-import voiceRoutes from "./routes/voiceRoutes.js"; 
-import ttsRoutes from "./routes/ttsroutes.js";
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
 
-dotenv.config();
+require('dotenv').config();
 
 const app = express();
+const port = process.env.PORT || 5000;
 
-
-
-// make desome sxshx
-// Parse JSON
+app.use(cors());
 app.use(express.json());
 
-// CORS – allow your frontend
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://portfolio-website-zeta-flax-98.vercel.app",
-    ],
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"],
-  })
-);
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri);
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log("✅ MongoDB database connection established successfully");
+})
 
-// Health check route (for quick tests)
-app.get("/", (req, res) => {
-  res.json({ status: "✅ Backend running", time: new Date().toISOString() });
-});
+const projectsRouter = require('./routes/projects');
+app.use('/projects', projectsRouter);
 
-// Attach your AI chat routes
-app.use("/api", chatRoutes); // <-- /api/chat is now live
-app.use("/api", voiceRoutes); 
-app.use("/api", ttsRoutes);
+const educationRouter = require('./routes/education.js');
+app.use('/education', educationRouter);
 
-// Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+
+app.listen(port, () => {
+    console.log(`🚀 Server is running on port: ${port}`);
 });
