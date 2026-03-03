@@ -1,16 +1,127 @@
-# React + Vite
+# B N Yashwanth — Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive developer portfolio built with **React**, **Vite**, and **Tailwind CSS**, featuring smooth animations, dark/light theme toggling, and an AI-powered chat widget.
 
-Currently, two official plugins are available:
+🔗 **Live**: [bnyashwanth.dev](https://bnyashwanth.dev) _(update with your real URL)_
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Hero Section** with typewriter effect and animated particles
+- **About, Experience, Education** — structured personal info
+- **Projects** — filterable project cards with modal detail views
+- **Skills** — categorized tech stack visualization
+- **Problem Solving** — LeetCode / competitive programming stats
+- **Certifications** — certificate gallery
+- **Contact Form** — powered by EmailJS
+- **AI Chat Widget** — portfolio assistant via Gradio
+- **Dark / Light Theme** — system-aware with manual toggle
+- **Smooth Animations** — AOS scroll animations + Framer Motion
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 Tech Stack
+
+| Layer     | Technology                                 |
+| --------- | ------------------------------------------ |
+| Framework | React 19 + Vite 5                          |
+| Styling   | Tailwind CSS 3                             |
+| Animation | Framer Motion, AOS, tsparticles            |
+| 3D        | Three.js + React Three Fiber               |
+| Backend   | Express.js + MongoDB (optional, `/server`) |
+
+---
+
+## 📁 Project Structure
+
+```
+Portfolio-Website/
+├── index.html              # Vite entry point
+├── package.json            # Dependencies & scripts
+├── vite.config.js          # Vite configuration
+├── tailwind.config.js      # Tailwind theme & tokens
+├── postcss.config.js       # PostCSS plugins
+├── .env                    # Environment variables (gitignored)
+├── public/
+│   ├── favicon.png
+│   ├── Resume.pdf
+│   ├── images/             # Project screenshots
+│   └── certificates/       # Certification images
+├── src/
+│   ├── main.jsx            # React entry point
+│   ├── App.jsx             # App layout & section composition
+│   ├── index.css           # Global styles & CSS variables
+│   ├── assets/             # Static images (profile, etc.)
+│   ├── components/         # All UI components
+│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx
+│   │   ├── About.jsx
+│   │   ├── Experience.jsx
+│   │   ├── Projects.jsx
+│   │   ├── ProjectCard.jsx
+│   │   ├── ProjectModal.jsx
+│   │   ├── Skills.jsx
+│   │   ├── ProblemSolving.jsx
+│   │   ├── Education.jsx
+│   │   ├── Certifications.jsx
+│   │   ├── Contact.jsx
+│   │   ├── ChatWidget.jsx
+│   │   ├── Footer.jsx
+│   │   ├── GithubStats.jsx
+│   │   ├── BackgroundEffects.jsx
+│   │   ├── ParticleBackground.jsx
+│   │   ├── Blog.jsx
+│   │   └── Testimonials.jsx
+│   ├── context/
+│   │   └── ThemeContext.jsx
+│   ├── data/               # Static data (projects, education, etc.)
+│   └── hooks/
+│       └── useTypewriter.js
+└── server/                 # Optional Express backend
+    ├── server.js
+    ├── package.json
+    ├── models/
+    └── routes/
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js** ≥ 18
+- **npm** ≥ 9
+
+### Setup
+
+```bash
+# Clone the repo
+git clone https://github.com/bnyashwanth/Portfolio-Website.git
+cd Portfolio-Website
+
+# Install dependencies
+npm install
+
+# Create .env (optional — for API integrations)
+cp .env.example .env
+
+# Start dev server
+npm run dev
+```
+
+The site will be running at **http://localhost:5173**.
+
+### Production Build
+
+```bash
+npm run build
+npm run preview
+```
+
+---
+
+## 📄 License
+
+MIT © B N Yashwanth
