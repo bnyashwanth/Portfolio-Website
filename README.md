@@ -15,7 +15,7 @@ A modern, responsive developer portfolio built with **React**, **Vite**, and **T
 - **Problem Solving** — LeetCode / competitive programming stats
 - **Certifications** — certificate gallery
 - **Contact Form** — powered by EmailJS
-- **AI Chat Widget** — portfolio assistant via Gradio
+- **AI Chat Widget** — portfolio assistant via Gemini API with portfolio grounding
 - **Dark / Light Theme** — system-aware with manual toggle
 - **Smooth Animations** — AOS scroll animations + Framer Motion
 
@@ -112,6 +112,20 @@ npm run dev
 ```
 
 The site will be running at **http://localhost:5173**.
+
+### Optional: Run Backend Chat API (Gemini)
+
+```bash
+# in a second terminal
+cd server
+npm install
+cp .env.example .env
+
+# add GEMINI_API_KEY in server/.env
+node server.js
+```
+
+If running frontend and backend locally, set `VITE_CHAT_API_BASE_URL=http://localhost:5000` in root `.env`.
 
 ### Production Build
 

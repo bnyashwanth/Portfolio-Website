@@ -11,17 +11,24 @@ app.use(cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri);
-const connection = mongoose.connection;
-connection.once('open', () => {
-  console.log("✅ MongoDB database connection established successfully");
-})
+if (uri) {
+  mongoose.connect(uri);
+  const connection = mongoose.connection;
+  connection.once('open', () => {
+    console.log("✅ MongoDB database connection established successfully");
+  });
+} else {
+  console.log("ℹ️ ATLAS_URI not found. Starting server without MongoDB connection.");
+}
 
 const projectsRouter = require('./routes/projects');
 app.use('/projects', projectsRouter);
 
 const educationRouter = require('./routes/education.js');
 app.use('/education', educationRouter);
+
+const chatRouter = require('./routes/chat.js');
+app.use('/api/chat', chatRouter);
 
 
 app.listen(port, () => {

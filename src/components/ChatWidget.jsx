@@ -1,12 +1,79 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaRobot, FaTimes, FaPaperPlane, FaCircle } from "react-icons/fa";
-import { getPortfolioReply, shouldUseLocalFirst } from "../utils/portfolioChatEngine";
+import { getPortfolioReply } from "../utils/portfolioChatEngine";
 
 
-// ✅ Automatically use localhost in development, Render URL in production
-const BASE_URL = import.meta.env.DEV
-  ? "http://localhost:7860"  // Local development
-  : "https://python-ai-service-for-portfolio.onrender.com";  // Production 
+// Use local backend in development and same-origin path in production.
+const BASE_URL = import.meta.env.VITE_CHAT_API_BASE_URL || (import.meta.env.DEV ? "http://localhost:5000" : "");
+
+// Parse inline markdown: **bold**, *italic*, [label](url), plain https:// urls
+const parseInline = (content) => {
+  const parts = [];
+  const inlineRegex = /(\*\*(.+?)\*\*|\*(.+?)\*|\[([^\]]+)\]\(([^)]+)\)|(https?:\/\/[^\s]+))/g;
+  let last = 0;
+  let match;
+  while ((match = inlineRegex.exec(content)) !== null) {
+    if (match.index > last) parts.push(content.slice(last, match.index));
+    if (match[2]) {
+      parts.push(<strong key={match.index} className="font-semibold">{match[2]}</strong>);
+    } else if (match[3]) {
+      parts.push(<em key={match.index}>{match[3]}</em>);
+    } else if (match[4] && match[5]) {
+      parts.push(
+        <a key={match.index} href={match[5]} target="_blank" rel="noopener noreferrer"
+          className="underline text-purple-400 hover:text-pink-400 transition-colors break-all">
+          {match[4]}
+        </a>
+      );
+    } else if (match[6]) {
+      parts.push(
+        <a key={match.index} href={match[6]} target="_blank" rel="noopener noreferrer"
+          className="underline text-purple-400 hover:text-pink-400 transition-colors break-all">
+          {match[6]}
+        </a>
+      );
+    }
+    last = match.index + match[0].length;
+  }
+  if (last < content.length) parts.push(content.slice(last));
+  return parts;
+};
+
+// Render markdown text into JSX — handles bullets, paragraphs, bold, links.
+const renderMarkdown = (text) => {
+  if (!text) return null;
+  const lines = text.split("\n");
+  const elements = [];
+  let bulletBuffer = [];
+
+  const flushBullets = (key) => {
+    if (bulletBuffer.length === 0) return;
+    elements.push(
+      <ul key={`ul-${key}`} className="list-disc ml-4 space-y-0.5 my-1">
+        {bulletBuffer}
+      </ul>
+    );
+    bulletBuffer = [];
+  };
+
+  lines.forEach((line, li) => {
+    const trimmed = line.trim();
+    if (!trimmed) {
+      flushBullets(li);
+      return;
+    }
+    const isBullet = /^[\*\-]\s/.test(trimmed);
+    if (isBullet) {
+      const content = trimmed.replace(/^[\*\-]\s/, "");
+      bulletBuffer.push(<li key={li}>{parseInline(content)}</li>);
+    } else {
+      flushBullets(li);
+      elements.push(<p key={li} className="mb-1 last:mb-0">{parseInline(trimmed)}</p>);
+    }
+  });
+  flushBullets("end");
+  return elements;
+};
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,23 +104,12 @@ const ChatWidget = () => {
 
     // Add user message to UI
     const newHistory = [...messages, { text: trimmed, sender: "user" }];
+    const localResult = getPortfolioReply(trimmed);
     setMessages(newHistory);
     setInput("");
     setLoading(true);
 
     try {
-      // First try a local response grounded in portfolio data.
-      const localResult = getPortfolioReply(trimmed);
-      if (shouldUseLocalFirst(localResult)) {
-        setMessages((prev) => [
-          ...prev,
-          { text: localResult.response, sender: "bot", source: localResult.source },
-        ]);
-        setErrorCount(0);
-        setLoading(false);
-        return;
-      }
-
       // 1. Prepare History
       const historyPayload = [];
       for (let i = 0; i < messages.length; i += 2) {
@@ -68,7 +124,7 @@ const ChatWidget = () => {
       );
 
       // 3. Fetch Request
-      const fetchPromise = fetch(`${BASE_URL}/chat`, {
+      const fetchPromise = fetch(`${BASE_URL}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -79,25 +135,37 @@ const ChatWidget = () => {
 
       const response = await Promise.race([fetchPromise, timeoutPromise]);
 
+      // 429 rate-limit — fall back to local data silently, no error shown
+      if (response.status === 429) {
+        throw new Error("rate_limit");
+      }
+
       if (!response.ok) {
         throw new Error(`Server error: ${response.status}`);
       }
 
       const data = await response.json();
-      const botReply = data.response;
+      const botReply = data.response || data.reply;
+
+      if (!botReply) {
+        throw new Error("No response returned from chat API");
+      }
 
       setMessages((prev) => [...prev, { text: botReply, sender: "bot" }]);
-      setErrorCount(0); // Reset error count on success
+      setErrorCount(0);
 
     } catch (error) {
       console.error("Chat Error:", error);
 
       const fallbackResult = getPortfolioReply(trimmed);
       if (fallbackResult?.response) {
+        const isRateLimit = error?.message === "rate_limit";
         setMessages((prev) => [
           ...prev,
           {
-            text: `${fallbackResult.response}\n\n(Answered from local portfolio data.)`,
+            text: isRateLimit
+              ? fallbackResult.response
+              : `${fallbackResult.response}\n\n(Answered from local portfolio data.)`,
             sender: "bot",
             source: fallbackResult.source,
           },
@@ -204,7 +272,11 @@ const ChatWidget = () => {
                     : 'bg-surface border border-gray-200/70 dark:border-gray-700/70 text-text-primary self-start rounded-bl-none shadow-sm'
                     } ${msg.isError ? 'border-red-500/50 text-red-400' : ''}`}
                 >
-                  {msg.text}
+                  {msg.sender === 'bot' ? (
+                    <div className="space-y-0.5">{renderMarkdown(msg.text)}</div>
+                  ) : (
+                    msg.text
+                  )}
                 </div>
               ))}
 
