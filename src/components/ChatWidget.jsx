@@ -4,7 +4,9 @@ import { getPortfolioReply } from "../utils/portfolioChatEngine";
 
 
 // Use local backend in development and same-origin path in production.
-const BASE_URL = import.meta.env.VITE_CHAT_API_BASE_URL || (import.meta.env.DEV ? "http://localhost:5000" : "");
+const RAW_BASE_URL = import.meta.env.VITE_CHAT_API_BASE_URL || (import.meta.env.DEV ? "http://localhost:5000" : "");
+const BASE_URL = RAW_BASE_URL.replace(/\/+$/, "");
+const CHAT_API_URL = `${BASE_URL}/api/chat`;
 
 // Parse inline markdown: **bold**, *italic*, [label](url), plain https:// urls
 const parseInline = (content) => {
@@ -124,7 +126,7 @@ const ChatWidget = () => {
       );
 
       // 3. Fetch Request
-      const fetchPromise = fetch(`${BASE_URL}/api/chat`, {
+      const fetchPromise = fetch(CHAT_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
