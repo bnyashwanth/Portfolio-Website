@@ -46,7 +46,7 @@ const Certifications = () => {
           onClick={() => setSelectedCert(null)}
         >
           <div
-            className="bg-surface rounded-2xl max-w-4xl w-full p-6 border border-gray-200 dark:border-gray-800"
+            className="bg-surface rounded-2xl max-w-5xl w-full p-4 sm:p-6 border border-gray-200 dark:border-gray-800"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-center mb-4">
@@ -58,11 +58,14 @@ const Certifications = () => {
                 ×
               </button>
             </div>
-            <img
-              src={selectedCert.image}
-              alt={selectedCert.name}
-              className="w-full rounded-lg"
-            />
+
+            <div className="max-h-[75vh] rounded-lg bg-black/20 border border-gray-200/30 dark:border-gray-700/40 p-2 sm:p-3 flex items-center justify-center overflow-auto">
+              <img
+                src={selectedCert.image}
+                alt={selectedCert.name}
+                className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
+              />
+            </div>
           </div>
         </div>
       )}

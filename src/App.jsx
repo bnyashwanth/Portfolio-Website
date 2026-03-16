@@ -10,6 +10,7 @@ import Contact from './components/Contact';
 import ProblemSolving from "./components/ProblemSolving";
 import Skills from './components/Skills';
 import ChatWidget from './components/ChatWidget';
+import Footer from './components/Footer';
 // import GithubStats from './components/GithubStats';
 import BackgroundEffects from './components/BackgroundEffects';
 import AOS from 'aos';
@@ -42,6 +43,7 @@ function App() {
       <Education />
       <Certifications />
       <Contact />
+      <Footer />
       <ChatWidget />
     </div>
   );

@@ -1,8 +1,8 @@
 const educationData = [
   {
     id: 1,
-    institution: "Dayananda Sagar College of Engineering",
-    degree: "B.E | Robotics and Artificial Intelligence",
+    institution: "Dayananda Sagar College of Engineering, Bengaluru",
+    degree: "B.Tech - Artificial Intelligence and Robotics",
     year: "2024 - 2028",
     cgpa: "9.33 / 10.0",
     achievements: [

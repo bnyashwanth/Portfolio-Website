@@ -1,12 +1,14 @@
 import { FaDownload } from "react-icons/fa";
 import profileImage from "../assets/profile.png";
-// import profileImageAlt from "../assets/profile1.png";
 import useTypewriter from "../hooks/useTypewriter";
 
 const Hero = () => {
   const typedText = useTypewriter([
     "B N Yashwanth",
+    "Full-Stack Developer",
     "Problem Solver",
+    "Competitive Programmer",
+    "AI Enthusiast"
   ]);
 
   const handleDownloadResume = () => {
@@ -59,7 +61,7 @@ bg-clip-text text-transparent
             </h1>
 
             <p className="relative text-base sm:text-lg md:text-xl font-medium text-primary">
-              Software Engineering Intern @YugaYatra | Full-Stack Web Developer(MERN) | Exploring Agentic AI
+              Ex-SWE Intern @YugaYatra | Full-Stack Web Developer(MERN) | Building AI-Powered Systems
             </p>
 
             <p className="relative text-text-muted text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">

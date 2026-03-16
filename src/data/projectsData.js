@@ -60,21 +60,21 @@ const projectsData = [
     liveUrl: "https://phazegen-ai.vercel.app/",
     githubUrl: "https://github.com/bnyashwanth/PhazeGEN",
   },
-  {
-    id: 5,
-    title: "Wanderlust",
-    description: "Full-stack travel listing platform for discovering and managing rental stays.",
-    problem:
-      "Travelers often struggle to find reliable accommodation listings with clear details, while property owners lack simple platforms to manage and showcase their rentals effectively.",
-    approach:
-      "Built a full-stack web application using Node.js, Express.js, and MongoDB, enabling users to create, browse, and manage travel listings. Implemented RESTful APIs for listings and reviews, integrated user authentication using JWT, and designed a responsive UI for seamless browsing across devices.",
-    impact:
-      "Enabled users to discover and manage travel accommodations through a centralized platform, improving accessibility and usability for both travelers and property owners.",
-    imageUrl: "/images/wanderlust-dashboard.png",
-    technologies: ["Node.js", "Express.js", "MongoDB", "EJS", "JWT"],
-    liveUrl: "#",
-    githubUrl: "https://github.com/bnyashwanth/Wanderlust-travel-website",
-  }
+  // {
+  //   id: 5,
+  //   title: "Wanderlust",
+  //   description: "Full-stack travel listing platform for discovering and managing rental stays.",
+  //   problem:
+  //     "Travelers often struggle to find reliable accommodation listings with clear details, while property owners lack simple platforms to manage and showcase their rentals effectively.",
+  //   approach:
+  //     "Built a full-stack web application using Node.js, Express.js, and MongoDB, enabling users to create, browse, and manage travel listings. Implemented RESTful APIs for listings and reviews, integrated user authentication using JWT, and designed a responsive UI for seamless browsing across devices.",
+  //   impact:
+  //     "Enabled users to discover and manage travel accommodations through a centralized platform, improving accessibility and usability for both travelers and property owners.",
+  //   imageUrl: "/images/wanderlust-dashboard.png",
+  //   technologies: ["Node.js", "Express.js", "MongoDB", "EJS", "JWT"],
+  //   liveUrl: "#",
+  //   githubUrl: "https://github.com/bnyashwanth/Wanderlust-travel-website",
+  // }
 
 
   // {
