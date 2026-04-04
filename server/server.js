@@ -30,6 +30,9 @@ app.use('/education', educationRouter);
 const chatRouter = require('./routes/chat.js');
 app.use('/api/chat', chatRouter);
 
+const githubRouter = require('./routes/github.js');
+app.use('/api/github', githubRouter);
+
 
 app.listen(port, () => {
     console.log(`🚀 Server is running on port: ${port}`);
